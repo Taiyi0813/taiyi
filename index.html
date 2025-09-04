@@ -1,0 +1,832 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>陈太一 - 土木工程师简历</title>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/feather-icons"></script>
+    <style>
+        :root {
+            /* Eva Unit-01 Color Scheme */
+            --eva-purple: #663399;
+            --eva-green: #39ff14;
+            --eva-orange: #ff6600;
+            --eva-dark-purple: #4a1a5c;
+            --eva-light-purple: #9966cc;
+            --eva-dark: #1a1a2e;
+            --eva-darker: #16213e;
+            
+            /* Light Theme */
+            --primary-bg: #ffffff;
+            --secondary-bg: #f8f9fa;
+            --card-bg: #ffffff;
+            --text-primary: #2c3e50;
+            --text-secondary: #6c757d;
+            --border-color: #dee2e6;
+            --shadow: rgba(0, 0, 0, 0.1);
+            --accent: var(--eva-purple);
+            --accent-light: var(--eva-light-purple);
+            --highlight: var(--eva-green);
+            --warning: var(--eva-orange);
+        }
+
+        [data-theme="dark"] {
+            /* Dark Theme with Eva Unit-01 Colors */
+            --primary-bg: var(--eva-dark);
+            --secondary-bg: var(--eva-darker);
+            --card-bg: var(--eva-dark-purple);
+            --text-primary: #ffffff;
+            --text-secondary: #b8b8b8;
+            --border-color: var(--eva-purple);
+            --shadow: rgba(102, 51, 153, 0.3);
+            --accent: var(--eva-green);
+            --accent-light: var(--eva-light-purple);
+            --highlight: var(--eva-green);
+            --warning: var(--eva-orange);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Noto Sans SC', sans-serif;
+            background: var(--primary-bg);
+            color: var(--text-primary);
+            transition: all 0.3s ease;
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Floating Navigation */
+        .floating-nav {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            z-index: 1000;
+            background: var(--card-bg);
+            border-radius: 50px;
+            padding: 10px;
+            box-shadow: 0 5px 20px var(--shadow);
+            border: 2px solid var(--accent);
+            backdrop-filter: blur(10px);
+        }
+
+        .nav-items {
+            display: flex;
+            gap: 10px;
+            align-items: center;
+        }
+
+        .nav-item {
+            padding: 8px 12px;
+            border-radius: 25px;
+            text-decoration: none;
+            color: var(--text-primary);
+            transition: all 0.3s ease;
+            font-size: 14px;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+
+        .nav-item:hover {
+            background: var(--accent);
+            color: white;
+            transform: scale(1.05);
+        }
+
+        .theme-toggle {
+            background: var(--accent);
+            border: none;
+            border-radius: 50%;
+            width: 40px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            color: white;
+        }
+
+        .theme-toggle:hover {
+            transform: scale(1.1);
+            background: var(--highlight);
+        }
+
+        /* Header Section */
+        .header {
+            padding: 100px 0 50px;
+            background: linear-gradient(135deg, var(--accent) 0%, var(--accent-light) 100%);
+            color: white;
+            text-align: center;
+            position: relative;
+        }
+
+        .header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: var(--primary-bg);
+            opacity: 0.1;
+        }
+
+        .profile-section {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 40px;
+            flex-wrap: wrap;
+            position: relative;
+            z-index: 1;
+        }
+
+        .profile-photo {
+            width: 200px;
+            height: 250px;
+            background-image: url('images/photo.png');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            border-radius: 15px;
+            border: 4px solid white;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .profile-info h1 {
+            font-size: 3rem;
+            margin-bottom: 10px;
+            font-weight: 700;
+        }
+
+        .profile-info .title {
+            font-size: 1.3rem;
+            opacity: 0.9;
+            margin-bottom: 20px;
+        }
+
+        .contact-info {
+            display: flex;
+            gap: 30px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 1rem;
+        }
+
+        /* Main Content */
+        .main-content {
+            padding: 50px 0;
+            display: grid;
+            grid-template-columns: 1fr 2fr;
+            gap: 40px;
+        }
+
+        .sidebar {
+            display: flex;
+            flex-direction: column;
+            gap: 30px;
+        }
+
+        .content {
+            display: flex;
+            flex-direction: column;
+            gap: 40px;
+        }
+
+        .section {
+            background: var(--card-bg);
+            border-radius: 15px;
+            padding: 30px;
+            box-shadow: 0 5px 15px var(--shadow);
+            border: 1px solid var(--border-color);
+            transition: all 0.3s ease;
+        }
+
+        .section:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px var(--shadow);
+        }
+
+        .section-title {
+            font-size: 1.5rem;
+            color: var(--accent);
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-weight: 600;
+        }
+
+        .section-title i {
+            color: var(--highlight);
+        }
+
+        /* Personal Info */
+        .info-grid {
+            display: grid;
+            gap: 15px;
+        }
+
+        .info-item {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            padding: 10px;
+            background: var(--secondary-bg);
+            border-radius: 8px;
+        }
+
+        .info-item i {
+            color: var(--accent);
+        }
+
+        /* Skills */
+        .skill-category {
+            margin-bottom: 20px;
+        }
+
+        .skill-category h4 {
+            color: var(--accent);
+            margin-bottom: 8px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .skill-list {
+            background: var(--secondary-bg);
+            padding: 15px;
+            border-radius: 8px;
+            border-left: 4px solid var(--highlight);
+        }
+
+        /* Education */
+        .education-item {
+            position: relative;
+            padding-left: 20px;
+            margin-bottom: 25px;
+        }
+
+        .education-item::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 5px;
+            width: 12px;
+            height: 12px;
+            background: var(--highlight);
+            border-radius: 50%;
+        }
+
+        .education-period {
+            color: var(--accent);
+            font-weight: 600;
+            font-size: 0.9rem;
+        }
+
+        .education-school {
+            font-weight: 600;
+            font-size: 1.1rem;
+            margin: 5px 0;
+        }
+
+        .education-major {
+            color: var(--text-secondary);
+            margin-bottom: 10px;
+        }
+
+        .course-list {
+            background: var(--secondary-bg);
+            padding: 15px;
+            border-radius: 8px;
+            margin-top: 10px;
+        }
+
+        /* Experience */
+        .experience-item {
+            border-left: 3px solid var(--accent);
+            padding-left: 20px;
+            margin-bottom: 30px;
+            position: relative;
+        }
+
+        .experience-item::before {
+            content: '';
+            position: absolute;
+            left: -7px;
+            top: 0;
+            width: 12px;
+            height: 12px;
+            background: var(--highlight);
+            border-radius: 50%;
+        }
+
+        .experience-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 10px;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+
+        .experience-title {
+            font-weight: 600;
+            color: var(--accent);
+            font-size: 1.1rem;
+        }
+
+        .experience-period {
+            background: var(--highlight);
+            color: white;
+            padding: 4px 12px;
+            border-radius: 15px;
+            font-size: 0.9rem;
+            font-weight: 500;
+        }
+
+        .experience-company {
+            font-weight: 600;
+            margin-bottom: 10px;
+        }
+
+        .experience-description {
+            background: var(--secondary-bg);
+            padding: 15px;
+            border-radius: 8px;
+            margin-top: 10px;
+        }
+
+        .experience-description ul {
+            list-style: none;
+            padding-left: 0;
+        }
+
+        .experience-description li {
+            padding: 5px 0;
+            position: relative;
+            padding-left: 20px;
+        }
+
+        .experience-description li::before {
+            content: '▶';
+            position: absolute;
+            left: 0;
+            color: var(--highlight);
+        }
+
+        /* Awards */
+        .award-item {
+            background: linear-gradient(135deg, var(--secondary-bg) 0%, var(--card-bg) 100%);
+            padding: 15px;
+            border-radius: 10px;
+            margin-bottom: 15px;
+            border-left: 4px solid var(--warning);
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .award-icon {
+            color: var(--warning);
+            font-size: 1.2rem;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .main-content {
+                grid-template-columns: 1fr;
+            }
+
+            .profile-section {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .profile-info h1 {
+                font-size: 2.5rem;
+            }
+
+            .contact-info {
+                flex-direction: column;
+                gap: 15px;
+            }
+
+            .floating-nav {
+                top: 10px;
+                right: 10px;
+            }
+
+            .nav-items {
+                flex-direction: column;
+            }
+
+            .nav-item {
+                font-size: 12px;
+                padding: 6px 10px;
+            }
+        }
+
+        /* Smooth scrolling */
+        html {
+            scroll-behavior: smooth;
+        }
+
+        /* Section animations */
+        .section {
+            animation: fadeInUp 0.8s ease-out;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Loading animation for theme switch */
+        .theme-switching * {
+            transition: all 0.3s ease !important;
+        }
+    </style>
+</head>
+<body>
+    <!-- Floating Navigation -->
+    <nav class="floating-nav">
+        <div class="nav-items">
+            <a href="#personal" class="nav-item">
+                <i data-feather="user"></i>
+                <span>个人信息</span>
+            </a>
+            <a href="#education" class="nav-item">
+                <i data-feather="book"></i>
+                <span>教育</span>
+            </a>
+            <a href="#experience" class="nav-item">
+                <i data-feather="briefcase"></i>
+                <span>经历</span>
+            </a>
+            <a href="#skills" class="nav-item">
+                <i data-feather="code"></i>
+                <span>技能</span>
+            </a>
+            <button class="theme-toggle" onclick="toggleTheme()">
+                <i data-feather="sun" id="theme-icon"></i>
+            </button>
+        </div>
+    </nav>
+
+    <!-- Header -->
+    <header class="header">
+        <div class="container">
+            <div class="profile-section">
+                <div class="profile-photo"></div>
+                <div class="profile-info">
+                    <h1>陈太一</h1>
+                    <p class="title">土木工程师 | 在读硕士研究生</p>
+                    <div class="contact-info">
+                        <div class="contact-item">
+                            <i data-feather="phone"></i>
+                            <span>18055569540</span>
+                        </div>
+                        <div class="contact-item">
+                            <i data-feather="mail"></i>
+                            <span>18055569540@163.com</span>
+                        </div>
+                        <div class="contact-item">
+                            <i data-feather="map-pin"></i>
+                            <span>安徽马鞍山</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <div class="container">
+        <div class="main-content">
+            <!-- Sidebar -->
+            <aside class="sidebar">
+                <!-- Personal Info -->
+                <section id="personal" class="section">
+                    <h2 class="section-title">
+                        <i data-feather="user"></i>
+                        个人信息
+                    </h2>
+                    <div class="info-grid">
+                        <div class="info-item">
+                            <i data-feather="users"></i>
+                            <span>民族：汉族</span>
+                        </div>
+                        <div class="info-item">
+                            <i data-feather="calendar"></i>
+                            <span>生日：2002.08.13</span>
+                        </div>
+                        <div class="info-item">
+                            <i data-feather="home"></i>
+                            <span>籍贯：江苏扬州</span>
+                        </div>
+                        <div class="info-item">
+                            <i data-feather="flag"></i>
+                            <span>政治面貌：共青团员</span>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Skills -->
+                <section id="skills" class="section">
+                    <h2 class="section-title">
+                        <i data-feather="code"></i>
+                        专业技能
+                    </h2>
+                    <div class="skill-category">
+                        <h4><i data-feather="globe"></i> 语言技能</h4>
+                        <div class="skill-list">
+                            英语 CET6 530分，雅思 7.0
+                        </div>
+                    </div>
+                    <div class="skill-category">
+                        <h4><i data-feather="tool"></i> 专业技能</h4>
+                        <div class="skill-list">
+                            熟悉 REVIT、AUTO CAD、Open LCA、S-beach Model、QGIS、Settle3
+                        </div>
+                    </div>
+                    <div class="skill-category">
+                        <h4><i data-feather="monitor"></i> 办公技能</h4>
+                        <div class="skill-list">
+                            熟练使用 Office 办公软件
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Awards -->
+                <section class="section">
+                    <h2 class="section-title">
+                        <i data-feather="award"></i>
+                        荣誉奖励
+                    </h2>
+                    <div class="award-item">
+                        <i data-feather="trophy" class="award-icon"></i>
+                        <span>全国大学生数学竞赛三等奖</span>
+                    </div>
+                    <div class="award-item">
+                        <i data-feather="star" class="award-icon"></i>
+                        <span>校园贡献奖</span>
+                    </div>
+                    <div class="award-item">
+                        <i data-feather="users" class="award-icon"></i>
+                        <span>社会实践优秀团队</span>
+                    </div>
+                    <div class="award-item">
+                        <i data-feather="user-check" class="award-icon"></i>
+                        <span>社会实践先进个人</span>
+                    </div>
+                    <div class="award-item">
+                        <i data-feather="zap" class="award-icon"></i>
+                        <span>互联网+创新创业大赛铜奖</span>
+                    </div>
+                </section>
+            </aside>
+
+            <!-- Main Content -->
+            <main class="content">
+                <!-- Education -->
+                <section id="education" class="section">
+                    <h2 class="section-title">
+                        <i data-feather="book"></i>
+                        教育背景
+                    </h2>
+                    <div class="education-item">
+                        <div class="education-period">2020.09—2024.6</div>
+                        <div class="education-school">长安大学</div>
+                        <div class="education-major">土木工程（城市地下空间方向）</div>
+                        <div class="course-list">
+                            <strong>主修课程：</strong>结构力学，土力学，钢结构设计原理，混凝土结构设计原理，地下结构设计原理，弹性力学，岩体力学，基础工程<br>
+                            <strong>毕业设计：</strong>某地下商场基坑开挖支护结构设计
+                        </div>
+                    </div>
+                    <div class="education-item">
+                        <div class="education-period">2024.09—2026.9</div>
+                        <div class="education-school">新南威尔士大学</div>
+                        <div class="education-major">土木工程</div>
+                        <div class="course-list">
+                            <strong>主修课程：</strong>桥梁工程, 风险管理，海岸工程，可持续发展，岩土力学，河口湿地治理
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Experience -->
+                <section id="experience" class="section">
+                    <h2 class="section-title">
+                        <i data-feather="briefcase"></i>
+                        事迹简介
+                    </h2>
+                    
+                    <div class="experience-item">
+                        <div class="experience-header">
+                            <div class="experience-title">建工学院彩虹心理协会 秘书处部长/副主席</div>
+                            <div class="experience-period">2020-2023</div>
+                        </div>
+                        <div class="experience-description">
+                            <ul>
+                                <li>2020-2021 学年校园贡献奖</li>
+                                <li>首届全国高校心理微电影优秀作品</li>
+                                <li>2021-2022 学年优秀彩虹使者</li>
+                                <li>长安大学第四届心理剧创演大赛三等奖</li>
+                                <li>2022-2023"红色沃土传百年青春志·绿水青山 寻革命征程路"暑期实践活动</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="experience-item">
+                        <div class="experience-header">
+                            <div class="experience-title">长安大学大学生艺术团 组织部部长</div>
+                            <div class="experience-period">2021-2022</div>
+                        </div>
+                        <div class="experience-description">
+                            <ul>
+                                <li>筹备并参与 70 周年校庆、毕业音乐会等多项大型晚会</li>
+                                <li>2021-2022 学年社团工作优秀个人</li>
+                                <li>2023 年获佰笛杯国际手风琴大赛二等奖</li>
+                                <li>2021-2022 学年完成入党积极分子培训</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="experience-item">
+                        <div class="experience-header">
+                            <div class="experience-title">陕西历史博物馆 志愿讲解员</div>
+                            <div class="experience-period">2021-2022</div>
+                        </div>
+                        <div class="experience-description">
+                            <ul>
+                                <li>陕西历史博物馆志愿者讲解员</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="experience-item">
+                        <div class="experience-header">
+                            <div class="experience-title">陕西鼎强建筑有限公司 实习施工员</div>
+                            <div class="experience-period">2023.07-2023.09</div>
+                        </div>
+                        <div class="experience-description">
+                            <ul>
+                                <li>施工准备协助、现场过程控制、技术与协调支持、数据与安全协助</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="experience-item">
+                        <div class="experience-header">
+                            <div class="experience-title">LCA 评估项目</div>
+                            <div class="experience-period">2024 T3</div>
+                        </div>
+                        <div class="experience-description">
+                            <ul>
+                                <li>对建筑从设计筹备到竣工验收全阶段的生命周期循环进行建模</li>
+                                <li>对家居元素流动进行分析</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="experience-item">
+                        <div class="experience-header">
+                            <div class="experience-title">海岸工程设计项目</div>
+                            <div class="experience-period">2025 T1</div>
+                        </div>
+                        <div class="experience-description">
+                            <ul>
+                                <li>规划海岸地区危险线</li>
+                                <li>设计防波堤</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="experience-item">
+                        <div class="experience-header">
+                            <div class="experience-title">土木工程设计实践</div>
+                            <div class="experience-period">2025 T2</div>
+                        </div>
+                        <div class="experience-description">
+                            <ul>
+                                <li>为新南威尔士大学校区设计混凝土储水罐，包括混凝土配合比及施工方案设计、岩土工程设计、环境工程设计</li>
+                                <li>为新南威尔士洲政府提交针对特定社区的宜居性研究报告</li>
+                            </ul>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Self Evaluation -->
+                <section class="section">
+                    <h2 class="section-title">
+                        <i data-feather="user-check"></i>
+                        自我评价
+                    </h2>
+                    <div class="experience-description">
+                        <p>作为一名土木工程专业（本科专注城市地下空间方向，硕士深耕土木工程综合领域）的在读学生，成绩长期保持专业前15%，具备扎实的学科功底，系统掌握结构力学、土力学、地下结构设计、岩土力学等核心理论，熟悉从工程设计到施工落地的全流程细节，能将专业知识灵活应用于实际项目中。</p>
+                        <br>
+                        <p>语言能力突出，英语六级530分、雅思7.0分，可熟练阅读英文专业文献、进行跨语言技术沟通。专业技能全面，精通REVIT、Auto CAD等工程设计软件，熟练运用Open LCA、S-beach Model、QGIS、Settle3等工具开展工程分析与评估，能独立完成结构建模、生命周期评估、地质数据分析等工作。</p>
+                        <br>
+                        <p>拥有丰富的实践经历，既在陕西鼎强建筑有限公司担任实习施工员时积累了现场管理、技术协调经验，也通过T3 LCA评估、海岸工程设计等项目深化了工程全周期思维与创新能力。</p>
+                        <br>
+                        <p>在校期间担任建工学院彩虹心理协会副主席、大学生艺术团组织部部长等职，锻炼了出色的组织协调与团队协作能力；陕西历史博物馆志愿讲解员经历则培养了良好的沟通表达与责任意识。兼具工程专业素养与综合软实力，对新技术有较强适应性，期待在实践中持续精进专业能力，为工程领域发展贡献力量。</p>
+                    </div>
+                </section>
+            </main>
+        </div>
+    </div>
+
+    <script>
+        // Theme toggle functionality
+        function toggleTheme() {
+            const body = document.body;
+            const themeIcon = document.getElementById('theme-icon');
+            
+            body.classList.add('theme-switching');
+            
+            if (body.hasAttribute('data-theme')) {
+                body.removeAttribute('data-theme');
+                themeIcon.setAttribute('data-feather', 'sun');
+                localStorage.setItem('theme', 'light');
+            } else {
+                body.setAttribute('data-theme', 'dark');
+                themeIcon.setAttribute('data-feather', 'moon');
+                localStorage.setItem('theme', 'dark');
+            }
+            
+            feather.replace();
+            
+            setTimeout(() => {
+                body.classList.remove('theme-switching');
+            }, 300);
+        }
+
+        // Load saved theme
+        function loadTheme() {
+            const savedTheme = localStorage.getItem('theme');
+            const themeIcon = document.getElementById('theme-icon');
+            
+            if (savedTheme === 'dark') {
+                document.body.setAttribute('data-theme', 'dark');
+                themeIcon.setAttribute('data-feather', 'moon');
+            } else {
+                themeIcon.setAttribute('data-feather', 'sun');
+            }
+        }
+
+        // Initialize
+        document.addEventListener('DOMContentLoaded', function() {
+            loadTheme();
+            feather.replace();
+        });
+
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('.nav-item').forEach(link => {
+            link.addEventListener('click', function(e) {
+                e.preventDefault();
+                const targetId = this.getAttribute('href');
+                const targetElement = document.querySelector(targetId);
+                
+                if (targetElement) {
+                    targetElement.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Add entrance animation delay for sections
+        const sections = document.querySelectorAll('.section');
+        sections.forEach((section, index) => {
+            section.style.animationDelay = `${index * 0.1}s`;
+        });
+    </script>
+</body>
+</html>
